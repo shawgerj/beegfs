@@ -7,6 +7,11 @@
 
 bool FSyncLocalFileMsgEx::processIncoming(ResponseContext& ctx)
 {
+    char logmsg[200];
+  sprintf(logmsg, "FSyncLocalFileMsgEx_processIncoming -- fh: %s",
+	  getFileHandleID());
+  LOG(GENERAL, ERR, logmsg);
+
    ctx.sendResponse(FSyncLocalFileRespMsg(fsync()));
 
    return true;

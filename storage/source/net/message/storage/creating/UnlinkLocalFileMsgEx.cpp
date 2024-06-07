@@ -8,6 +8,11 @@
 
 bool UnlinkLocalFileMsgEx::processIncoming(ResponseContext& ctx)
 {
+  char logmsg[200];
+  sprintf(logmsg, "UnlinkLocalFileMsgEx_processIncoming -- fh: %s",
+	  getEntryID());
+  LOG(GENERAL, ERR, logmsg);
+
    const char* logContext = "UnlinkChunkFileMsg incoming";
 
    App* app = Program::getApp();
