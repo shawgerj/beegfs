@@ -15,7 +15,7 @@
 bool SetLocalAttrMsgEx::processIncoming(ResponseContext& ctx)
 {
    const char* logContext = "SetLocalAttrMsgEx incoming";
-
+   LOG(GENERAL, ERR, ToString());
    App* app = Program::getApp();
 
    const SettableFileAttribs* attribs = getAttribs();

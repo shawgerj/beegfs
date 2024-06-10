@@ -13,10 +13,7 @@
 
 bool TruncLocalFileMsgEx::processIncoming(ResponseContext& ctx)
 {
-  char logmsg[200];
-  sprintf(logmsg, "TruncLocalFileMsgEx_processIncoming -- fh: %s size: %ld",
-	  getEntryID(), getFilesize());
-  LOG(GENERAL, ERR, logmsg);
+  LOG(GENERAL, ERR, ToString());
 
    const char* logContext = "TruncChunkFileMsg incoming";
 

@@ -11,6 +11,7 @@
 
 #include <climits>
 
+#define CURR_MICROS(t) (t.tv_sec * 1000 * 1000) + (t.tv_nsec / 1000)
 
 // common message constants
 // ========================
@@ -191,7 +192,6 @@ class NetMessage
 
          this->releaseSockAfterProcessing = true;
       }
-
 
       virtual void serializePayload(Serializer& ser) const = 0;
       virtual bool deserializePayload(const char* buf, size_t bufLen) = 0;

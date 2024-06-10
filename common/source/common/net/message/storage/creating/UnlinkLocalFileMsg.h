@@ -64,6 +64,15 @@ class UnlinkLocalFileMsg : public NetMessageSerdes<UnlinkLocalFileMsg>
 
 
    public:
+  std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "UnlinkLocalFileMsg" << " - " << CURR_MICROS(t) << " : ";
+    oss << "entryID: " << entryID;
+
+    return oss.str();
+  }
 
       // getters & setters
 

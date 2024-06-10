@@ -74,6 +74,18 @@ class FLockRangeMsg : public MirroredMessageBase<FLockRangeMsg>
       EntryInfo entryInfo;
 
    public:
+    std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "FLockRangeMsg" << " - " << CURR_MICROS(t) << " : ";
+    oss << "fileHandleID: " << fileHandleID
+	<< "clientNumID: " << clientNumID
+	<< "start: " << start
+	<< "end: " << end;
+    return oss.str();
+  }
+
       // getters & setters
       NumNodeID getClientNumID() const
       {

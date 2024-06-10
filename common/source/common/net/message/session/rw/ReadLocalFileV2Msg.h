@@ -70,6 +70,18 @@ class ReadLocalFileV2MsgBase
       PathInfo pathInfo;
 
    public:
+    std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "ReadLocalFileMsg" << " - " << CURR_MICROS(t) << " : ";
+    oss << "offset: " << offset
+	<< "count: " << count
+	<< "fileHandleID: " << fileHandleID
+	<< "clientNumID: " << clientNumID;
+    return oss.str();
+  }
+
       // getters & setters
       NumNodeID getClientNumID() const
       {

@@ -60,6 +60,17 @@ class FSyncLocalFileMsg : public NetMessageSerdes<FSyncLocalFileMsg>
 
 
    public:
+  std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "FSyncLocalFileMsg" << " - " << CURR_MICROS(t) << " : ";
+    oss << "sessionID: " << sessionID
+	<< "fileHandleID: " << fileHandleID
+	<< "targetID: " << targetID;
+    return oss.str();
+  }
+  
       // getters & setters
       NumNodeID getSessionID() const
       {

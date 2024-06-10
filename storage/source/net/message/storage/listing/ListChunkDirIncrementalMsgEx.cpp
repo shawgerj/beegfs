@@ -4,6 +4,7 @@
 
 bool ListChunkDirIncrementalMsgEx::processIncoming(ResponseContext& ctx)
 {
+  LOG(GENERAL, ERR, ToString());
    uint16_t targetID = getTargetID();
    bool isMirror = getIsMirror();
    std::string relativeDir = getRelativeDir();

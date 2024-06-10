@@ -22,13 +22,11 @@ const std::string WriteLocalFileMsgSender::logContextPref = "WriteChunkFileMsg";
 const std::string WriteLocalFileRDMAMsgSender::logContextPref = "WriteChunkFileRDMAMsg";
 #endif
 
+
 template <class Msg, typename WriteState>
 bool WriteLocalFileMsgExBase<Msg, WriteState>::processIncoming(NetMessage::ResponseContext& ctx)
 {
-  char logmsg[200];
-  sprintf(logmsg, "WriteLocalFileMsgExBase_processIncoming -- fh: %s offset: %ld count: %ld",
-	  getFileHandleID(), getOffset(), getCount());
-  LOG(GENERAL, ERR, logmsg);
+  LOG(GENERAL, ERR, ToString());
    App* app = Program::getApp();
 
    bool success;

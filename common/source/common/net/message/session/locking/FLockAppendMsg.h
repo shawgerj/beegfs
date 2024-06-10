@@ -72,6 +72,16 @@ class FLockAppendMsg : public NetMessageSerdes<FLockAppendMsg>
 
 
    public:
+      std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "FLockAppendMsg" << " - " << CURR_MICROS(t) << " : ";
+    oss << "fileHandleID: " << fileHandleID
+	<< "clientNumID: " << clientNumID;
+    return oss.str();
+  }
+
       // getters & setters
       NumNodeID getClientNumID() const
       {

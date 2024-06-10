@@ -64,6 +64,15 @@ class GetChunkFileAttribsMsg : public NetMessageSerdes<GetChunkFileAttribsMsg>
 
 
    public:
+  std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "GetChunkFileAttribsMsg" << " - " << CURR_MICROS(t) << " : ";
+    oss << "entryID: " << entryID;
+
+    return oss.str();
+  }
 
       // inliners
       const char* getEntryID() const

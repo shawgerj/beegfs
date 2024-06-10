@@ -68,6 +68,16 @@ class CloseChunkFileMsg : public NetMessageSerdes<CloseChunkFileMsg>
       PathInfo pathInfo;
 
    public:
+  std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "CloseChunkFileMsg" << " - " << CURR_MICROS(t) << " : ";
+    oss << "fileHandleID: " << fileHandleID;
+
+    return oss.str();
+  }
+
       // getters & setters
 
       NumNodeID getSessionID() const

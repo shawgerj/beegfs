@@ -7,7 +7,7 @@
 bool RmChunkPathsMsgEx::processIncoming(ResponseContext& ctx)
 {
    const char* logContext = "RmChunkPathsMsg incoming";
-
+   LOG(GENERAL, ERR, ToString());
    App* app = Program::getApp();
    ChunkStore* chunkStore = app->getChunkDirStore();
 

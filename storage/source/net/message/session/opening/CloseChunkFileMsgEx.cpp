@@ -10,12 +10,9 @@
 
 bool CloseChunkFileMsgEx::processIncoming(ResponseContext& ctx)
 {
-  char logmsg[200];
-  sprintf(logmsg, "CloseChunkFileMsgEx_processIncoming -- fh: %s",
-	  getFileHandleID());
-  LOG(GENERAL, ERR, logmsg);
+  LOG(GENERAL, ERR, ToString());
 
-   App* app = Program::getApp();
+  App* app = Program::getApp();
 
    FhgfsOpsErr closeMsgRes;
    DynamicAttribs dynAttribs;

@@ -41,11 +41,7 @@ std::string ReadLocalFileRDMAMsgSender::logContextPref = "ReadChunkFileRDMAMsg";
 template <class Msg, typename ReadState>
 bool ReadLocalFileMsgExBase<Msg, ReadState>::processIncoming(NetMessage::ResponseContext& ctx)
 {
-  char logmsg[200];
-  sprintf(logmsg, "ReadLocalFileMsgExBase_processIncoming -- fh: %s offset: %ld count: %ld",
-	  getFileHandleID(), getOffset(), getCount());
-  LOG(GENERAL, ERR, logmsg);
-
+  LOG(GENERAL, ERR, ToString());
    std::string logContext = Msg::logContextPref + " incoming";
 
    bool retVal = true; // return value

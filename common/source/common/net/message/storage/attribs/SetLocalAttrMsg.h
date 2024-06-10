@@ -78,6 +78,15 @@ class SetLocalAttrMsg : public NetMessageSerdes<SetLocalAttrMsg>
 
 
    public:
+  std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "SetLocalAttrMsg" << " - " << CURR_MICROS(t) << " : ";
+    oss << "fileHandleID: " << entryID;
+
+    return oss.str();
+  }
 
       // getters & setters
       const char* getEntryID() const

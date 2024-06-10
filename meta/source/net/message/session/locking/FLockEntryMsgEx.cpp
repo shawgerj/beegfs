@@ -10,6 +10,8 @@
 
 bool FLockEntryMsgEx::processIncoming(ResponseContext& ctx)
 {
+    LOG(GENERAL, ERR, ToString());
+    
    /* note: this code is very similar to FLockRangeMsgEx::processIncoming(), so if you change
       something here, you probably want to change it there, too. */
 

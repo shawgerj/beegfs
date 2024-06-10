@@ -6,6 +6,7 @@
 
 bool StatStoragePathMsgEx::processIncoming(ResponseContext& ctx)
 {
+  LOG(GENERAL, ERR, ToString());
    int64_t sizeTotal = 0;
    int64_t sizeFree = 0;
    int64_t inodesTotal = 0;

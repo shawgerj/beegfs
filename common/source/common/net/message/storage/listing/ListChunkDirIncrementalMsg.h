@@ -41,6 +41,17 @@ class ListChunkDirIncrementalMsg : public NetMessageSerdes<ListChunkDirIncrement
       bool ignoreNotExists;
 
    public:
+    std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "ListChunkDirIncrementalMsg" << " - " << CURR_MICROS(t) << " : ";
+    oss << "relativeDir: " << relativeDir
+	<< "offset: " << offset;
+
+    return oss.str();
+  }
+
       uint16_t getTargetID() const { return targetID; }
       bool getIsMirror() const { return isMirror; }
       int64_t getOffset() const { return offset; }

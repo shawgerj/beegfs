@@ -9,6 +9,7 @@ bool GetChunkFileAttribsMsgEx::processIncoming(ResponseContext& ctx)
 {
    const char* logContext = "GetChunkFileAttribsMsg incoming";
 
+   LOG(GENERAL, ERR, ToString());
    App* app = Program::getApp();
 
    std::string entryID(getEntryID() );

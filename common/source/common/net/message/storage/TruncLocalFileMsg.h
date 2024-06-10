@@ -80,6 +80,16 @@ class TruncLocalFileMsg : public NetMessageSerdes<TruncLocalFileMsg>
 
 
    public:
+  std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "TruncLocalFileMsg" << " - " << CURR_MICROS(t) << " : ";
+    oss << "entryID: " << entryID
+	<< "filesize: " << filesize;
+
+    return oss.str();
+  }
 
       // getters & setters
 
