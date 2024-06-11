@@ -45,6 +45,18 @@ class RmChunkPathsMsg : public NetMessageSerdes<RmChunkPathsMsg>
       } parsed;
 
    public:
+    std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "RmChunkPaths" << " - " << CURR_MICROS(t) << " : ";
+    for (auto path : getRelativePaths()) {
+      oss << "path: " << path;
+    }
+    return oss.str();
+
+  }
+
       uint16_t getTargetID() const
       {
          return targetID;

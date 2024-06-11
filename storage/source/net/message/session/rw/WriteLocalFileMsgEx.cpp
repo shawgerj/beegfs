@@ -26,8 +26,19 @@ const std::string WriteLocalFileRDMAMsgSender::logContextPref = "WriteChunkFileR
 template <class Msg, typename WriteState>
 bool WriteLocalFileMsgExBase<Msg, WriteState>::processIncoming(NetMessage::ResponseContext& ctx)
 {
-  LOG(GENERAL, ERR, ToString());
-   App* app = Program::getApp();
+    std::ostringstream oss;
+    struct timespec t;
+    const char* fh = getFileHandleID();
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "WriteLocalFileMsg" << " - " << CURR_MICROS(t) << " : ";
+    oss << "offset: " << getOffset()
+	<< "count: " << getCount()
+	<< "fileHandleID: " << fh
+	<< "clientNumID: " << getClientNumID();
+    std::string logmsg = oss.str();
+    
+    LOG(GENERAL, ERR, logmsg.c_str());
+    App* app = Program::getApp();
 
    bool success;
    int64_t writeClientRes;

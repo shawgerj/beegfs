@@ -30,6 +30,15 @@ class StatStoragePathMsg : public SimpleUInt16Msg
 
 
    public:
+  std::string ToString() {
+    std::ostringstream oss;
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    oss << "StatStoragePath" << " - " << CURR_MICROS(t) << " : ";
+    oss << "targetID: " << getValue();
+    return oss.str();
+
+  }
       // getters & setters
       uint16_t getTargetID() const
       {

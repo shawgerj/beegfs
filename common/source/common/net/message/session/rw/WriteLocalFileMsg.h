@@ -79,8 +79,8 @@ class WriteLocalFileMsgBase
       // for deserialization
       PathInfo pathInfo;
 
-   public:
-  std::string ToString() {
+public:
+  std::string ToString() const {
     std::ostringstream oss;
     struct timespec t;
     clock_gettime(CLOCK_MONOTONIC, &t);
